@@ -13,10 +13,38 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <!-- Seção Principal -->
-    <header>
+    <!-- Menu de navegação -->
+    <nav class="navbar navbar-dark bg-primary fixed-top">
       <div class="container">
-        <img src="img/icone_tela_principal.jpeg" alt="icone" />
+        <button class="btn-menu" onclick="mostrarMenu()">
+          <img
+            src="img/icon-hamburger-menu.png"
+            width="28"
+            height="28"
+            alt="menu"
+          />
+        </button>
+        <a class="navbar-brand mx-auto" href="#">
+          <img
+            src="img/icone_tela_principal.png"
+            width="40"
+            height="40"
+            class="rounded-circle me-2"
+            alt="principal"
+          />
+          Super Shock
+        </a>
+      </div>
+    </nav>
+
+    <!-- Seção Principal -->
+    <header class="hero-section text-center text-white py-5">
+      <div class="container">
+        <img
+          class="hero-image rounded-circle mb-4"
+          src="img/icone_tela_principal.png"
+          alt="icone"
+        />
         <h1 class="display-4 fw-bold">Super Shock</h1>
         <p class="lead">O herói do Eletromagnetismo</p>
         <a href="#" class="btn btn-warning btn-lg"> Saiba Mais</a>
@@ -27,10 +55,14 @@
       <section class="py-5">
         <div class="container">
           <div class="row">
-            <div class="col-mb-6">
-              <img src="img/historia.jpg" alt="historia" />
+            <div class="col-6">
+              <img
+                src="img/historia.jpg"
+                class="img-fluid rounded"
+                alt="historia"
+              />
             </div>
-            <div class="col-md-6">
+            <div class="col-6">
               <h2 class="text-primary">História do Desenho</h2>
               <p>
                 O Super Choque - ou Static, como é originalmente conhecido - é
@@ -52,10 +84,17 @@
       </section>
 
       <!-- Historia do Personagem -->
-      <section class="py-5">
+      <section class="py-5 bg-dark text-white">
         <div class="container">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-6 order-md-2">
+              <img
+                src="img/historia2.jpg"
+                class="img-fluid rounded"
+                alt="historia"
+              />
+            </div>
+            <div class="col-6">
               <h2 class="text-primary">História do Personagem</h2>
               <p>
                 Virgil Ovid Hawkins (Super Shock) é um jovem negro, nascido e
@@ -68,14 +107,90 @@
                 <small>Fonte: Observatório do Cinema</small>
               </p>
             </div>
-            <div class="col-mb-6">
-              <img src="img/historia2.jpg" alt="historia" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Curiosidades -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 order-mb-2">
+              <img
+                src="img/curiosidades.jpeg"
+                class="img-fluid rounded"
+                alt="Curiosidades"
+              />
+            </div>
+            <div class="col-6">
+              <h2 class="text-primary">Curiosidades</h2>
+              <ol>
+                <li>
+                  O nome é uma homenagem ao advogado Virgil Darnell Hawkins
+                </li>
+                <li>Foi inspirado no Homem-Aranha da Marvel</li>
+                <li>Já integrou a Liga da Justiça em episódio especial</li>
+                <li>
+                  Usa habilidades de skate para se locomover com seus poderes
+                </li>
+              </ol>
+              <p class="text-muted">
+                <small> Fonte: Legião dos Heróis</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Super Poderes -->
+      <section class="py-5 bg-dark text-white">
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <h2 class="text-primary">Super Poderes</h2>
+              <p>Os poderes se baseiam na eletricidade e eletromagnetismo:</p>
+              <div class="row">
+                <div class="col-6">
+                  <ul>
+                    <li>Eletromagnetismo</li>
+                    <li>Campos magnéticos</li>
+                    <li>Controle elétrico</li>
+                    <li>Levitação de metais</li>
+                    <li>Ondas de rádio</li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <ul>
+                    <li>Raios elétricos</li>
+                    <li>Bolas de energia</li>
+                    <li>Magnetização</li>
+                    <li>Energia pura</li>
+                    <li>Intelecto genial</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="text-muted">
+                <small> Fonte: NerdBox</small>
+              </p>
+            </div>
+            <div class="col-6">
+              <img
+                src="img/super_poder.jpeg"
+                class="img-fluid rounded"
+                alt="Super Poderes"
+              />
             </div>
           </div>
         </div>
       </section>
     </main>
-    <footer></footer>
+    <footer class="bg-primary text-white text-center py-3">
+      <div class="container">
+        <p class="mb-0">
+          Projeto Desenvovlimento Web 1 - Site Super Shock &copy; 2025
+        </p>
+      </div>
+    </footer>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

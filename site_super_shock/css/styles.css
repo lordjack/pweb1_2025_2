@@ -1,0 +1,39 @@
+/* Cores do tema */
+:root {
+  --azul-escuro: #020115;
+  --amarelo: #ffc107;
+}
+
+/* sessão principal */
+.hero-section {
+  background: linear-gradient(45deg, var(--azul-escuro), #1a1a2e);
+  min-height: 100vh;
+}
+/* Responsivo */
+@media (max-width: 768px) {
+  .hero-image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.hero-image {
+  width: 150px;
+  height: 150px;
+  border: 3px solid var(--amarelo);
+}
+
+img {
+  transition: transform 0.3s;
+}
+img:hover {
+  transform: scale(1.05);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section, header {
+    scroll-margin-top: 70px;
+}

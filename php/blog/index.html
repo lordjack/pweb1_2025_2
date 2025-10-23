@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="blog-header">
+        <div class="row d-flex justify-content-between align-items-center">
+          <div class="col-4">
+            <a class="link-secondary" href="#">Se inscreva</a>
+          </div>
+          <div class="col-4">
+            <a class="display-6 link-secondary" href="#">Oeste News</a>
+          </div>
+          <div class="col-4">
+            <a class="link-secondary" href="#">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a class="btn btn-sm btn-outline-secondary" href="#"
+              >Cadastrar-se</a
+            >
+          </div>
+        </div>
+      </header>
+      <div class="nav-scroller py-1 mb-2">
+        <!-- link: https://getbootstrap.com/docs/5.3/utilities/spacing/-->
+        <nav class="nav flex justify-content-between">
+          <a href="#" class="link-secundary">Mundo</a>
+          <a href="#" class="link-secundary">Brasil</a>
+          <a href="#" class="link-secundary">Tecnologia</a>
+          <a href="#" class="link-secundary">Design</a>
+          <a href="#" class="link-secundary">Cultura</a>
+          <a href="#" class="link-secundary">Negócios</a>
+          <a href="#" class="link-secundary">Política</a>
+          <a href="#" class="link-secundary">Opniões</a>
+          <a href="#" class="link-secundary">Ciência</a>
+          <a href="#" class="link-secundary">Saúde</a>
+          <a href="#" class="link-secundary">Viagens</a>
+        </nav>
+      </div>
+
+      <main class="container">
+        <div class="bg-dark p-4 mb-4 text-white rounded">
+          <div class="col-mb-6 px-0">
+            <h1 class="display-5 fst-italic">Titulo de uma postagem blog</h1>
+            <p class="lead">
+              Multiplas linhas de texto que forma o led, informando novos
+              leitores...
+            </p>
+            <p class="lead">
+              <a class="text-white fw-bold text-decoration-none" href="#">
+                Continue lendo...</a
+              >
+            </p>
+          </div>
+        </div>
+        <!-- Inicio Cards -->
+        <div class="row mb-2">
+          <!-- CARD 01 -->
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <div class="row g-0">
+                <div class="col p-4">
+                  <span class="badge bg-primary m-2">Mundo</span>
+                  <h3 class="card-title">Canadá etc...</h3>
+                  <small class="text-muted">Nov 12</small>
+                  <p class="mt-2">
+                    teste... teste... teste... teste... teste... teste...
+                    teste... teste... teste... teste...
+                  </p>
+                  <a class="btn btn-link p-0" href="#">Continue lendo...</a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                  <img
+                    src="https://picsum.photos/200/250?random=1"
+                    class="img-fluid rounded"
+                    alt="aleatoria"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim CARD 01 -->
+
+          <!-- Inicio CARD 02 -->
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <div class="row g-0">
+                <div class="col p-4">
+                  <span class="badge bg-primary m-2">Mundo</span>
+                  <h3 class="card-title">Estados Unidos etc...</h3>
+                  <small class="text-muted">Nov 20</small>
+                  <p class="mt-2">
+                    teste2... teste2... teste2... teste2... teste2... teste2...
+                    teste2... teste... teste... teste...
+                  </p>
+                  <a class="btn btn-link p-0" href="#">Continue lendo...</a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                  <img
+                    src="https://picsum.photos/200/250?random=2"
+                    class="img-fluid rounded"
+                    alt="aleatoria"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim CARD 02 -->
+        </div>
+        <!-- Fim Cards -->
+
+        <div class="row g-5 pt-4">
+          <!-- inicio corpo da postagem -->
+          <div class="col-8">
+            <h3 class="pb-4 mb-2 fst-italic border-bottom">Chapecó e Região</h3>
+
+            <article class="blog-post">
+              <h2 class="blog-post-title">Postagem de exemplo 01</h2>
+              <p class="blog-post-meta">Janeiro 1,2025 <a href="#">Tulio</a></p>
+              <p class="justify-content">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore
+                dolore nisi odit porro cumque non dolorum quisquam facere!
+                Voluptates rerum voluptatum a perferendis vero laboriosam
+                debitis deleniti, id sint veritatis!
+              </p>
+              <p class="justify-content">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore
+                dolore nisi odit porro cumque non dolorum quisquam facere!
+                Voluptates rerum voluptatum a perferendis vero laboriosam
+                debitis deleniti, id sint veritatis!
+              </p>
+              <p class="justify-content">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore
+                dolore nisi odit porro cumque non dolorum quisquam facere!
+                Voluptates rerum voluptatum a perferendis vero laboriosam
+                debitis deleniti, id sint veritatis!
+              </p>
+            </article>
+
+            <article class="blog-post">
+              <h2 class="blog-post-title">Postagem de exemplo 02</h2>
+              <p class="blog-post-meta">Janeiro 1,2025 <a href="#">Tulio</a></p>
+              <p class="justify-content">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore
+                dolore nisi odit porro cumque non dolorum quisquam facere!
+                Voluptates rerum voluptatum a perferendis vero laboriosam
+                debitis deleniti, id sint veritatis!
+              </p>
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>@social</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="blog-post">
+              <h2 class="blog-post-title">Postagem de exemplo 03</h2>
+              <p class="blog-post-meta">Janeiro 1,2025 <a href="#">Tulio</a></p>
+              <p class="justify-content">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore
+                dolore nisi odit porro cumque non dolorum quisquam facere!
+                Voluptates rerum voluptatum a perferendis vero laboriosam
+                debitis deleniti, id sint veritatis!
+              </p>
+              <ul>
+                <li>Primeiro item da linha</li>
+                <li>Segundo item da linha</li>
+                <li>Receiro item da linha</li>
+              </ul>
+            </article>
+
+            <nav class="blog-paginacao">
+              <a class="btn btn-outline-primary" href="#">Antigos</a>
+              <a class="btn btn-outline-secondary disable" href="#">Novos</a>
+            </nav>
+          </div>
+          <!-- fim corpo da postagem -->
+          <!-- inicio Menu lateral direito-->
+          <div class="col-4">
+            <div class="position-sticky pt-4" style="top: 2rem">
+              <div class="p-4 mb-4 bg-light rounded">
+                <h4 class="fst-italic">Sobre</h4>
+                <p class="mb-0">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequuntur corrupti minus sequi illo harum quos modi soluta
+                  dicta cumque, voluptatum aut in earum nostrum amet dolore odit
+                  non dolores mollitia?
+                </p>
+              </div>
+              <div class="p-4">
+                <h4 class="fst-italic">Arquivos</h4>
+                <ol class="list-unstyled mb-0">
+                  <li><a href="#">Fevereiro 2025</a></li>
+                  <li><a href="#">Marco 2025</a></li>
+                  <li><a href="#">Abril 2025</a></li>
+                  <li><a href="#">Maio 2025</a></li>
+                  <li><a href="#">Junho 2025</a></li>
+                  <li><a href="#">Julho 2025</a></li>
+                </ol>
+              </div>
+              <div class="p-4">
+                <h4 class="fst-italic">Links Úteis</h4>
+                <ol class="list-unstyled mb-0">
+                  <li>
+                    <a href="#"><i class="fa-brands fa-github"></i> Github</a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-brands fa-instagram"></i> Instagram</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-brands fa-facebook"></i> Facebook</a
+                    >
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- fim Menu lateral direito-->
+        </div>
+      </main>
+
+      <!-- Roda pé -->
+      <footer
+        class="blog-footer mt-4 py-4"
+        style="
+          padding: 3.5rem 3;
+          color: #727272 !important;
+          text-align: center;
+          background-color: #f9f9f9;
+          border-top: 0.5rem solid;
+        "
+      >
+        <p>
+          Todos os Direitos Reservados <a href="#"> Oeste News</a> por
+          <a href="#">@OesteNews</a>
+        </p>
+        <p>
+          <a href="#">Voltar para o top</a>
+        </p>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

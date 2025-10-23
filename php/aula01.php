@@ -30,9 +30,18 @@
 
     echo "<br>";
 
-    foreach ($nomes as $item) {
-        echo $item . "<br>";
+    foreach ($nomes as $key => $item) {
+        echo "Indice: $key Valor: $item <br>";
     }
+
+
+
+
+
+
+
+
+
 
 
     ?>

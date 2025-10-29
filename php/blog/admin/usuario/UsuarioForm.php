@@ -1,5 +1,45 @@
 <?php
 include '../header.php';
+include '../db.class.php';
+
+if (!empty($_POST)) {
+    try {
+        $db = new db();
+        $errors = [];
+
+      //  var_dump($_POST);
+      //  exit;
+
+        if (empty($_POST['nome'])) {
+            $errors[] = 'O nome é obrigatório';
+        }
+
+        if (empty($_POST['telefone'])) {
+            $errors[] = 'O telefone é obrigatório';
+        }
+
+        if (empty($_POST['cpf'])) {
+            $errors[] = 'O cpf é obrigatório';
+        }
+
+        $db->store([
+            "nome" => $_POST['nome'],
+            "telefone" => $_POST['telefone'],
+            "cpf" => $_POST['cpf'],
+            "email" => $_POST['email']
+        ]);
+        echo "Registro Salvo com sucesso!";
+
+        echo "<script>
+        setTimeout(
+            ()=> window.location.href = 'UsuarioList.php', 2000
+        );
+    </script>";
+    } catch (Exception $e) {
+        var_dump($errors, $e->getMessage());
+        exit;
+    }
+}
 ?>
 
 

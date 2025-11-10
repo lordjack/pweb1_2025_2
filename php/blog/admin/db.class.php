@@ -2,16 +2,20 @@
 
 class db
 {
-
-    private $host = "localhost";
-    private $user = "root";
-    private $password = "";
-    private $port = "3306";
-    private $dbname = "db_pweb1_2025_2";
-
+    private $host = 'localhost';
+    private $user = 'root';
+    private $password = '';
+    private $port = '3306';
+    private $dbname = 'db_pweb1_2025_2';
+    private $table_name;
+/*
+    public function __construct($table_name)
+    {
+        $this->table_name = $table_name;
+    }
+    */
     function conn()
     {
-
         try {
             $conn = new PDO(
                 "mysql:host=$this->host;dbname=$this->dbname;port=$this->port",
@@ -20,13 +24,13 @@ class db
                 [
                     PDO::ATTR_ERRMODE,
                     PDO::ERRMODE_EXCEPTION,
-                    PDO::MYSQL_ATTR_INIT_COMMAND => " SET NAMES utf8"
+                    PDO::MYSQL_ATTR_INIT_COMMAND => ' SET NAMES utf8',
                 ]
             );
 
             return $conn;
         } catch (PDOException $e) {
-            echo "Erro: " . $e->getMessage();
+            echo 'Erro: ' . $e->getMessage();
         }
     }
 
@@ -34,15 +38,17 @@ class db
     {
         $conn = $this->conn();
 
-        $sql = "INSERT INTO `usuario` (`nome`, `telefone`, `cpf`, `email`)
-             VALUES (?, ?, ?, ? );";
+        $sql = "INSERT INTO `usuario` (`nome`, `telefone`, `cpf`, `email`, `login`, `senha`)
+             VALUES (?, ?, ?, ?, ?, ? );";
 
         $st = $conn->prepare($sql);
         $st->execute([
             $dados['nome'],
             $dados['telefone'],
             $dados['cpf'],
-            $dados['email']
+            $dados['email'],
+            $dados['login'],
+            $dados['senha'],
         ]);
     }
 
@@ -59,7 +65,7 @@ class db
             $dados['nome'],
             $dados['telefone'],
             $dados['cpf'],
-            $dados['email']
+            $dados['email'],
         ]);
     }
 
@@ -68,7 +74,7 @@ class db
         //select * from usuario WHERE id = 5
         $conn = $this->conn();
 
-        $sql = "SELECT * FROM usuario WHERE id = ?";
+        $sql = 'SELECT * FROM usuario WHERE id = ?';
 
         $st = $conn->prepare($sql);
         $st->execute([$id]);
@@ -80,7 +86,7 @@ class db
     {
         $conn = $this->conn();
 
-        $sql = "SELECT * FROM usuario";
+        $sql = 'SELECT * FROM usuario';
 
         $st = $conn->prepare($sql);
         $st->execute();
@@ -92,7 +98,7 @@ class db
     {
         $conn = $this->conn();
 
-        $sql = "DELETE FROM usuario WHERE id = ?";
+        $sql = 'DELETE FROM usuario WHERE id = ?';
 
         $st = $conn->prepare($sql);
         $st->execute([$id]);
@@ -111,5 +117,37 @@ class db
         $st->execute(["%$valor%"]);
 
         return $st->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function login($dados)
+    {
+        //select * from usuario WHERE login = ?
+        $conn = $this->conn();
+
+        $sql = 'SELECT * FROM usuario WHERE login = ?';
+
+        $st = $conn->prepare($sql);
+        $st->execute([$dados['login']]);
+
+        // var_dump($dados);
+        // exit();
+
+        $result = $st->fetchObject();
+
+        if (password_verify($dados['senha'], $result->senha)) {
+            return $result;
+        } else {
+            return 'error';
+        }
+    }
+
+    function checkLogin()
+    {
+        session_start();
+
+        if (empty($_SESSION['login'])) {
+            session_destroy();
+            header('Location: ../login.php?error=Sessao Expirada!');
+        }
     }
 }

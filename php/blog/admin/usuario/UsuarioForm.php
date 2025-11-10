@@ -26,33 +26,29 @@ if (!empty($_POST)) {
         }
 
         if (empty($_POST['id'])) {
-            $db->store([
-                "nome" => $_POST['nome'],
-                "telefone" => $_POST['telefone'],
-                "cpf" => $_POST['cpf'],
-                "email" => $_POST['email']
-            ]);
-            echo "Registro Salvo com sucesso!";
-        } else {
-            $db->update([
-                "id" => $_POST['id'],
-                "nome" => $_POST['nome'],
-                "telefone" => $_POST['telefone'],
-                "cpf" => $_POST['cpf'],
-                "email" => $_POST['email']
-            ]);
+            if ($_POST['senha'] === $_POST['c_senha']) {
+                
+                $_POST['senha'] = password_hash(
+                    $_POST['senha'],
+                    PASSWORD_BCRYPT
+                );
 
-            echo "Registro Atualizado com sucesso!";
+                $db->store($_POST);
+                echo 'Registro Salvo com sucesso!';
+            }
+        } else {
+            $db->update($_POST);
+            echo 'Registro Atualizado com sucesso!';
         }
 
         echo "<script>
-        setTimeout(
-            ()=> window.location.href = 'UsuarioList.php', 2000
-        );
-    </script>";
+            setTimeout(
+                ()=> window.location.href = 'UsuarioList.php', 2000
+            );
+        </script>";
     } catch (Exception $e) {
         var_dump($errors, $e->getMessage());
-        exit;
+        exit();
     }
 }
 
@@ -61,7 +57,6 @@ if (!empty($_GET['id'])) {
     //  var_dump($data);
     // exit;
 }
-
 ?>
 
 
@@ -72,23 +67,27 @@ if (!empty($_GET['id'])) {
     <div class="row">
         <div class="col-6">
             <label for="" class="form-label">Nome</label>
-            <input class="form-control" type="text" name="nome" value="<?= $data->nome ?? '' ?>">
+            <input class="form-control" type="text" name="nome" value="<?= $data->nome ??
+                '' ?>">
         </div>
 
         <div class="col-6">
             <label for="" class="form-label">Email</label>
-            <input class="form-control" type="text" name="email" value="<?= $data->email ?? '' ?>">
+            <input class="form-control" type="text" name="email" value="<?= $data->email ??
+                '' ?>">
         </div>
     </div>
 
     <div class="row">
         <div class="col-6">
             <label for="" class="form-label">CPF</label>
-            <input class="form-control" type="text" name="cpf" value="<?= $data->cpf ?? '' ?>">
+            <input class="form-control" type="text" name="cpf" value="<?= $data->cpf ??
+                '' ?>">
         </div>
         <div class="col-6">
             <label for="" class="form-label">Telefone</label>
-            <input class="form-control" type="text" name="telefone" value="<?= $data->telefone ?? '' ?>">
+            <input class="form-control" type="text" name="telefone" value="<?= $data->telefone ??
+                '' ?>">
         </div>
     </div>
 
@@ -99,11 +98,11 @@ if (!empty($_GET['id'])) {
         </div>
         <div class="col">
             <label for="" class="form-label">Senha</label>
-            <input class="form-control" type="text" name="senha">
+            <input class="form-control" type="password" name="senha">
         </div>
         <div class="col">
             <label for="" class="form-label">Confirmar Senha</label>
-            <input class="form-control" type="text" name="c_senha">
+            <input class="form-control" type="password" name="c_senha">
         </div>
     </div>
 
@@ -116,6 +115,5 @@ if (!empty($_GET['id'])) {
 
 </form>
 
-<?php
-include '../footer.php';
+<?php include '../footer.php';
 ?>

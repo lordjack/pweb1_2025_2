@@ -4,7 +4,7 @@ include '../db.class.php';
 
 $db = new db();
 //var_dump($dados);
-//exit;
+$db->checkLogin();
 
 if (!empty($_GET['id'])) {
     $db->destroy($_GET['id']);

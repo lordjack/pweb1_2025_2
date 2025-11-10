@@ -9,7 +9,17 @@
 </head>
 
 <body>
-    <?php include "../menu.php" ?>
+
+<?php
+$hiddenPage = ['login.php', 'UsuarioForm.php', 'index.php'];
+$currentPage = basename($_SERVER['PHP_SELF']);
+
+$showMenu = !in_array($currentPage, $hiddenPage);
+
+if ($showMenu) {
+    include_once '../menu.php';
+}
+?>
 
     <div class="container mt-4">
         <div class="row">

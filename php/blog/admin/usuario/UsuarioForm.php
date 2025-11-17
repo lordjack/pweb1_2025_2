@@ -1,13 +1,12 @@
 <?php
 include '../header.php';
-include '../db.class.php';
+include '../database/db.class.php';
 
-$db = new db();
+$db = new db('usuario');
 $data = null;
 
 if (!empty($_POST)) {
     try {
-        $db = new db();
         $errors = [];
 
         //  var_dump($_POST);
@@ -27,18 +26,27 @@ if (!empty($_POST)) {
 
         if (empty($_POST['id'])) {
             if ($_POST['senha'] === $_POST['c_senha']) {
-                
                 $_POST['senha'] = password_hash(
                     $_POST['senha'],
                     PASSWORD_BCRYPT
                 );
 
+                unset($_POST['c_senha'], $_POST['id']); //remove os campos do vetor $_POST
                 $db->store($_POST);
                 echo 'Registro Salvo com sucesso!';
             }
         } else {
-            $db->update($_POST);
-            echo 'Registro Atualizado com sucesso!';
+            if ($_POST['senha'] === $_POST['c_senha']) {
+                $_POST['senha'] = password_hash(
+                    $_POST['senha'],
+                    PASSWORD_BCRYPT
+                );
+                unset($_POST['c_senha']); //remove o campo do vetor $_POST
+
+                $db->update($_POST);
+
+                echo 'Registro Atualizado com sucesso!';
+            }
         }
 
         echo "<script>

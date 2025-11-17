@@ -10,10 +10,10 @@
           <a class="nav-link active" aria-current="page" href="#">Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./usuario/UsuarioList.php">Usuário</a>
+          <a class="nav-link" href="../usuario/UsuarioList.php">Usuário</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Post</a>
+          <a class="nav-link" href="../post/PostList.php">Post</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Categoria</a>

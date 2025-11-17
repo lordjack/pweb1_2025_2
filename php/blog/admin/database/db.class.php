@@ -8,12 +8,12 @@ class db
     private $port = '3306';
     private $dbname = 'db_pweb1_2025_2';
     private $table_name;
-/*
+
     public function __construct($table_name)
     {
         $this->table_name = $table_name;
     }
-    */
+
     function conn()
     {
         try {
@@ -37,36 +37,67 @@ class db
     public function store($dados)
     {
         $conn = $this->conn();
+        $flag = 0;
+        $arrayDados = [];
 
-        $sql = "INSERT INTO `usuario` (`nome`, `telefone`, `cpf`, `email`, `login`, `senha`)
-             VALUES (?, ?, ?, ?, ?, ? );";
+        $sql = "INSERT INTO $this->table_name (";
+
+        foreach ($dados as $campo => $valor) {
+            if ($flag == 0) {
+                $sql .= "$campo ";
+            } else {
+                $sql .= ", $campo ";
+            }
+            $flag = 1;
+        }
+
+        $sql .= ') VALUES (';
+
+        $flag = 0;
+        foreach ($dados as $campo => $valor) {
+            if ($flag == 0) {
+                $sql .= '?';
+            } else {
+                $sql .= ', ?';
+            }
+            $flag = 1;
+            $arrayDados[] = $valor;
+        }
+
+        $sql .= ');';
 
         $st = $conn->prepare($sql);
-        $st->execute([
-            $dados['nome'],
-            $dados['telefone'],
-            $dados['cpf'],
-            $dados['email'],
-            $dados['login'],
-            $dados['senha'],
-        ]);
+        $st->execute($arrayDados);
     }
 
     public function update($dados)
     {
         $id = $dados['id'];
         $conn = $this->conn();
+        $flag = 0;
+        $arrayDados = [];
 
-        $sql = "UPDATE `usuario` SET `nome`=?, `telefone`=?, `cpf`=?, `email`=?
-                    WHERE id = $id";
+        $sql = "UPDATE $this->table_name SET ";
+
+        foreach ($dados as $campo => $valor) {
+            if ($flag == 0) {
+                $sql .= "$campo = ? ";
+            } else {
+                $sql .= ", $campo = ? ";
+            }
+            $flag = 1;
+            $arrayDados = $valor;
+        }
+
+        $sql .= " WHERE id = $id";
+
+       // var_dump($sql, $arrayDados);
+       // var_dump($sql, $arrayDados);
+       
+        exit();
 
         $st = $conn->prepare($sql);
-        $st->execute([
-            $dados['nome'],
-            $dados['telefone'],
-            $dados['cpf'],
-            $dados['email'],
-        ]);
+        $st->execute($arrayDados);
     }
 
     public function find($id)
@@ -74,7 +105,7 @@ class db
         //select * from usuario WHERE id = 5
         $conn = $this->conn();
 
-        $sql = 'SELECT * FROM usuario WHERE id = ?';
+        $sql = "SELECT * FROM $this->table_name WHERE id = ?";
 
         $st = $conn->prepare($sql);
         $st->execute([$id]);
@@ -86,7 +117,7 @@ class db
     {
         $conn = $this->conn();
 
-        $sql = 'SELECT * FROM usuario';
+        $sql = "SELECT * FROM $this->table_name";
 
         $st = $conn->prepare($sql);
         $st->execute();
@@ -98,7 +129,7 @@ class db
     {
         $conn = $this->conn();
 
-        $sql = 'DELETE FROM usuario WHERE id = ?';
+        $sql = "DELETE FROM $this->table_name WHERE id = ?";
 
         $st = $conn->prepare($sql);
         $st->execute([$id]);
@@ -111,7 +142,7 @@ class db
 
         $conn = $this->conn();
 
-        $sql = "SELECT * FROM usuario WHERE $campo LIKE ?";
+        $sql = "SELECT * FROM $this->table_name WHERE $campo LIKE ?";
 
         $st = $conn->prepare($sql);
         $st->execute(["%$valor%"]);
@@ -124,7 +155,7 @@ class db
         //select * from usuario WHERE login = ?
         $conn = $this->conn();
 
-        $sql = 'SELECT * FROM usuario WHERE login = ?';
+        $sql = "SELECT * FROM $this->table_name WHERE login = ?";
 
         $st = $conn->prepare($sql);
         $st->execute([$dados['login']]);

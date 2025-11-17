@@ -1,15 +1,13 @@
 <?php
 include './header.php';
-include './db.class.php';
+include './database/db.class.php';
 
-$db = new db();
+$db = new db('usuario');
 $data = null;
 
 if (!empty($_POST)) {
     try {
-        $db = new db();
         $errors = [];
-
         //  var_dump($_POST);
         //  exit;
 
@@ -29,6 +27,7 @@ if (!empty($_POST)) {
             if ($result !== 'error') {
                 session_start();
 
+                $_SESSION['usuario_id'] = $result->id;
                 $_SESSION['login'] = $result->login;
                 $_SESSION['nome'] = $result->nome;
 
@@ -65,7 +64,7 @@ if (!empty($_GET['id'])) {
         </div>
         <div class="col">
             <label for="" class="form-label">Senha</label>
-            <input class="form-control" type="text" name="senha">
+            <input class="form-control" type="password" name="senha">
         </div>
     </div>
 

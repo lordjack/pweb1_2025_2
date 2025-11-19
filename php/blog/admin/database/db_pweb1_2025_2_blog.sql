@@ -22,6 +22,22 @@ INSERT INTO `categoria` (`id`, `nome`) VALUES
 	(2, 'Educação'),
 	(3, 'Saúde');
 
+-- Copiando estrutura para tabela db_pweb1_2025_2.usuario
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `cpf` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `telefone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `email` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `login` varchar(40) COLLATE utf8mb4_bin DEFAULT NULL,
+  `senha` varchar(80) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- Copiando dados para a tabela db_pweb1_2025_2.usuario: ~2 rows (aproximadamente)
+INSERT INTO `usuario` (`id`, `nome`, `cpf`, `telefone`, `email`, `login`, `senha`) VALUES
+	(1, 'admin', '123', '49 8866-5505', 'admi@admin.com', 'admin', '$2y$10$tKxcF8jtHkmgUOvCdGukYOGx1P7PT2uyjZHuw3CC.j.PhVoFrAlFa');
+
 -- Copiando estrutura para tabela db_pweb1_2025_2.post
 CREATE TABLE IF NOT EXISTS `post` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -40,18 +56,3 @@ CREATE TABLE IF NOT EXISTS `post` (
 
 -- Copiando dados para a tabela db_pweb1_2025_2.post: ~0 rows (aproximadamente)
 
--- Copiando estrutura para tabela db_pweb1_2025_2.usuario
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `cpf` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `telefone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `email` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `login` varchar(40) COLLATE utf8mb4_bin DEFAULT NULL,
-  `senha` varchar(80) COLLATE utf8mb4_bin DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
--- Copiando dados para a tabela db_pweb1_2025_2.usuario: ~2 rows (aproximadamente)
-INSERT INTO `usuario` (`id`, `nome`, `cpf`, `telefone`, `email`, `login`, `senha`) VALUES
-	(1, 'admin', '123', '49 8866-5505', 'admi@admin.com', 'admin', '$2y$10$tKxcF8jtHkmgUOvCdGukYOGx1P7PT2uyjZHuw3CC.j.PhVoFrAlFa');

@@ -86,15 +86,13 @@ class db
                 $sql .= ", $campo = ? ";
             }
             $flag = 1;
-            $arrayDados = $valor;
+            $arrayDados[] = $valor;
         }
 
         $sql .= " WHERE id = $id";
 
        // var_dump($sql, $arrayDados);
-       // var_dump($sql, $arrayDados);
-       
-        exit();
+       // exit();
 
         $st = $conn->prepare($sql);
         $st->execute($arrayDados);

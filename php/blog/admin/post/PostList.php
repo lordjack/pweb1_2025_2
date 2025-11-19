@@ -2,7 +2,7 @@
 include '../header.php';
 include '../database/db.class.php';
 
-$db = new db('usuario');
+$db = new db('post');
 //var_dump($dados);
 $db->checkLogin();
 
@@ -18,15 +18,15 @@ if (!empty($_POST)) {
 
 ?>
 
-<h3>Listagem Usuário</h3>
+<h3>Listagem Postagem</h3>
 
-<form action="./UsuarioList.php" method="post">
+<form action="./PostList.php" method="post">
     <div class="row">
         <div class="col">
             <select name="tipo" class="form-select">
-                <option value="nome">Nome</option>
-                <option value="cpf">CPF</option>
-                <option value="telefone">Telefone</option>
+                <option value="titulo">Titulo</option>
+                <option value="status">Status</option>
+                <option value="data_publicacao">Data Publicação</option>
             </select>
         </div>
 
@@ -36,7 +36,7 @@ if (!empty($_POST)) {
 
         <div class="col">
             <button type="submit" class="btn btn-primary">Buscar</button>
-            <a href="./UsuarioForm.php" class="btn btn-success">Cadastrar</a>
+            <a href="./PostForm.php" class="btn btn-success">Cadastrar</a>
         </div>
     </div>
 </form>
@@ -47,10 +47,11 @@ if (!empty($_POST)) {
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Data Publicação</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Usuário</th>
                     <th scope="col">Ação</th>
                     <th scope="col">Ação</th>
                 </tr>
@@ -59,15 +60,25 @@ if (!empty($_POST)) {
 
                 <?php
                 foreach ($dados as $item) {
+
+                    $dbCategoria = new db('categoria');
+                    $categoria = $dbCategoria->find($item->categoria_id);
+
+                    $dbUsuario = new db('usuario');
+                    $usuario = $dbUsuario->find($item->usuario_id);
+
+                    $status = $item->status == 1 ? "Publicado" : "Não Publicado";
+
                     echo "<tr>
                         <th scope='row'>$item->id</th>
-                        <td>$item->nome</td>
-                        <td>$item->telefone</td>
-                        <td>$item->cpf</td>
-                        <td>$item->email</td>
-                        <td><a href='./UsuarioForm.php?id=$item->id'>Editar</a></td>
+                        <td>$item->titulo</td>
+                        <td>$item->data_publicacao</td>
+                        <td>$status</td>
+                        <td>$categoria->nome</td>
+                        <td>$usuario->nome</td>
+                        <td><a href='./PostForm.php?id=$item->id'>Editar</a></td>
                         <td><a 
-                             href='./UsuarioList.php?id=$item->id'
+                             href='./PostList.php?id=$item->id'
                              onclick='return confirm(\"Deseja Excluir?\")'
                             >Deltar</a></td>
                     </tr>";

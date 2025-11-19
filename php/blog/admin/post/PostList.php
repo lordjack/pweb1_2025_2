@@ -59,12 +59,12 @@ if (!empty($_POST)) {
             <tbody>
 
                 <?php
+                $dbCategoria = new db('categoria');
+                $dbUsuario = new db('usuario');
+
                 foreach ($dados as $item) {
 
-                    $dbCategoria = new db('categoria');
                     $categoria = $dbCategoria->find($item->categoria_id);
-
-                    $dbUsuario = new db('usuario');
                     $usuario = $dbUsuario->find($item->usuario_id);
 
                     $status = $item->status == 1 ? "Publicado" : "Não Publicado";
